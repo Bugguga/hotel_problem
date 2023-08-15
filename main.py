@@ -19,6 +19,7 @@ def book(room_id, start, end):
         return
     booking=Booking(date_start, date_end)
     room.book(booking)
+    hotel.add_book(int(room_id),booking.get_id())
 
 
 def cancel(booking_id):
@@ -41,5 +42,5 @@ for i in range(no_line):
 
 for room in hotel.rooms:
     print("Room: %s" % room.name)
-    for booking in room.bookings:
-        print("Booking Id %s: %s -> %s" % (booking.get_id(),booking.start,booking.end))
+    for keys,values in room.bookings.items():
+        print("Booking Id %s: %s -> %s" % (values.get_id(),values.start,values.end))
